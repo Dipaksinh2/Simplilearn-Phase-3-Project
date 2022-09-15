@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org./1999/xhtml" xmlns:sec="http://www.w3.org./1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body>
+
+  <div th:replace="adminHome :: navbarAdmin"> </div>
+
+  <div class="container page-content">
+    <table id="table-article" class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>User Name</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email-Id</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+    <tr data-th-each="user : ${listUsers}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.username}"></td>
+    <td th:text="${user.firstName}"></td>
+    <td th:text="${user.lastName}"></td>
+    <td th:text="${user.email}"></td>
+    </tbody>
+  </table>
+  </div>
+
+
+
+  <div th:replace="common/header :: body-scripts"> </div>
+  
+  <script>
+  	$(document).ready(function() {
+	    $('#table-article').DataTable({
+	    	stateSave: true
+	    });
+	} );
+  </script> 
+
+</body>
+</html>
